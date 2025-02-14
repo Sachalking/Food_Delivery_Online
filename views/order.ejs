@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<h1 class="mb-4">Place Your Order</h1>
+<form action="/api/order" method="POST">
+  <div class="mb-3">
+    <label for="restaurantId" class="form-label">Select Restaurant</label>
+    <select class="form-select" id="restaurantId" name="restaurantId" required>
+      <option value="">--Select Restaurant--</option>
+      <% restaurants.forEach(function(restaurant){ %>
+        <option value="<%= restaurant._id %>"><%= restaurant.name %></option>
+      <% }); %>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="customerName" class="form-label">Customer Name</label>
+    <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Enter your name" required>
+  </div>
+  <div class="mb-3">
+    <label for="items" class="form-label">Order Items</label>
+    <input type="text" class="form-control" id="items" name="items" placeholder="E.g. Pizza, Burger" required>
+  </div>
+  <button type="submit" class="btn btn-success">Place Order</button>
+</form>
+<%- include('partials/footer') %>
